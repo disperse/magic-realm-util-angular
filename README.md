@@ -1,3 +1,20 @@
+```
+Normal use results:
+  0.0 - 10.7% CPU
+  94.3 - 97.4MB Memory
+   
+Torture test results:
+   14.6 - 18.9% CPU
+   94.0 - 100 MB Memory
+```
+
+```
+ 390K (109K gzip) May 27 15:46 main.6876252149e7914c.js
+  33K ( 12K gzip) May 27 15:46 polyfills.2bc674d83458c252.js
+  73K (  9K gzip) May 27 15:46 styles.6ba6a796dfeff0bf.css
+   1K (0.3K gzip) May 27 15:46 runtime.27845ceb5aedcb1f.js
+```
+
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
