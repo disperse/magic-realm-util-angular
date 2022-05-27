@@ -1,4 +1,11 @@
-<table mat-table [dataSource]="categories">
+<mat-card>
+  <mat-card-title>Score calculator</mat-card-title>
+  <mat-card-actions>
+    <button mat-raised-button (click)="store.setRandomValues()">Random</button>
+    <button mat-raised-button (click)="store.toggleTortureTest()">Toggle torture test</button>
+  </mat-card-actions>
+</mat-card>
+<table mat-table [dataSource]="store.categories">
   <ng-container matColumnDef="category">
     <th mat-header-cell *matHeaderCellDef>Category</th>
     <td mat-cell *matCellDef="let category">{{ category.category }}</td>
@@ -9,7 +16,7 @@
     <td mat-cell *matCellDef="let category">
       <input type="number" min="0" max="5" [(ngModel)]="category.points" />
     </td>
-    <td mat-footer-cell *matFooterCellDef>{{ totalPoints }}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ store.getPointsTotal() }}</td>
   </ng-container>
   <ng-container matColumnDef="multiplier">
     <th mat-header-cell *matHeaderCellDef></th>
@@ -52,17 +59,17 @@
   <ng-container matColumnDef="basic">
     <th mat-header-cell *matHeaderCellDef>Basic</th>
     <td mat-cell *matCellDef="let category">{{ category.basicScore }}</td>
-    <td mat-footer-cell *matFooterCellDef>{{ totalBasicScore }}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ store.getBasicScoreTotal() }}</td>
   </ng-container>
   <ng-container matColumnDef="bonus">
     <th mat-header-cell *matHeaderCellDef>Bonus</th>
     <td mat-cell *matCellDef="let category">{{ category.bonusScore }}</td>
-    <td mat-footer-cell *matFooterCellDef>{{ totalBonusScore }}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ store.getBonusScoreTotal() }}</td>
   </ng-container>
   <ng-container matColumnDef="final">
     <th mat-header-cell *matHeaderCellDef>Final</th>
     <td mat-cell *matCellDef="let category">{{ category.finalScore }}</td>
-    <td mat-footer-cell *matFooterCellDef>{{ totalFinalScore }}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ store.getFinalScore() }}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>

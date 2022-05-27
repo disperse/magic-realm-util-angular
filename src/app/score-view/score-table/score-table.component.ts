@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ScoreTableService } from "../../core/services/score-table.service";
-import Category from "../../core/models/Category";
-import { computed } from "mobx-angular";
+import { ScoreTableStore } from "../../core/stores/score-table.store";
 
 @Component({
   selector: 'app-score-table',
@@ -11,10 +9,9 @@ import { computed } from "mobx-angular";
 export class ScoreTableComponent implements OnInit {
 
   constructor(
-    private scoreTableService: ScoreTableService,
+    public store: ScoreTableStore,
   ) { }
 
-  public categories: Category[] = [];
   public columnsToDisplay = [
     'category',
     'points',
@@ -29,24 +26,6 @@ export class ScoreTableComponent implements OnInit {
     'final',
   ];
 
-  @computed get totalPoints() {
-    return this.categories.reduce((pv, cv) => pv + cv.points, 0);
-  }
-
-  @computed get totalBasicScore() {
-    return this.categories.reduce((pv, cv) => pv + cv.basicScore, 0);
-  }
-
-  @computed get totalBonusScore() {
-    return this.categories.reduce((pv, cv) => pv + cv.bonusScore, 0);
-  }
-
-  @computed get totalFinalScore() {
-    return this.totalBasicScore + this.totalBonusScore;
-  }
-
-  ngOnInit(): void {
-    this.categories = this.scoreTableService.getCategories();
-  }
+  ngOnInit(): void { }
 
 }

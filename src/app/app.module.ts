@@ -9,8 +9,11 @@ import { RulesViewComponent } from './rules-view/rules-view.component';
 import { ScoreViewComponent } from './score-view/score-view.component';
 import { ScoreTableComponent } from './score-view/score-table/score-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
-import { MobxAngularModule } from "mobx-angular";
+import { CalculatePointsComponent } from './score-view/calculate-points/calculate-points.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,17 @@ import { MobxAngularModule } from "mobx-angular";
     RulesViewComponent,
     ScoreViewComponent,
     ScoreTableComponent,
+    CalculatePointsComponent,
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatSortModule,
     MatTableModule,
-    MobxAngularModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
