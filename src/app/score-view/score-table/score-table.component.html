@@ -1,0 +1,70 @@
+<table mat-table [dataSource]="categories">
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef>Category</th>
+    <td mat-cell *matCellDef="let category">{{ category.category }}</td>
+    <td mat-footer-cell *matFooterCellDef>Totals</td>
+  </ng-container>
+  <ng-container matColumnDef="points">
+    <th mat-header-cell *matHeaderCellDef>Points</th>
+    <td mat-cell *matCellDef="let category">
+      <input type="number" min="0" max="5" [(ngModel)]="category.points" />
+    </td>
+    <td mat-footer-cell *matFooterCellDef>{{ totalPoints }}</td>
+  </ng-container>
+  <ng-container matColumnDef="multiplier">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let category">
+      times {{ category.multiplier }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="needed">
+    <th mat-header-cell *matHeaderCellDef>Needed</th>
+    <td mat-cell *matCellDef="let category">
+      {{ category.needed }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="recorded">
+    <th mat-header-cell *matHeaderCellDef>Recorded</th>
+    <td mat-cell *matCellDef="let category">
+      <input type="number" min="-999" max="999" *ngIf="category.hasRecorded" [(ngModel)]="category.recorded" />
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="owned">
+    <th mat-header-cell *matHeaderCellDef>Owned</th>
+    <td mat-cell *matCellDef="let category">
+      <input type="number" min="-999" max="999" *ngIf="category.hasOwned" [(ngModel)]="category.owned" />
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef>Total</th>
+    <td mat-cell *matCellDef="let category">{{ category.total }}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef>Score</th>
+    <td mat-cell *matCellDef="let category">{{ category.score }}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="basic">
+    <th mat-header-cell *matHeaderCellDef>Basic</th>
+    <td mat-cell *matCellDef="let category">{{ category.basicScore }}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ totalBasicScore }}</td>
+  </ng-container>
+  <ng-container matColumnDef="bonus">
+    <th mat-header-cell *matHeaderCellDef>Bonus</th>
+    <td mat-cell *matCellDef="let category">{{ category.bonusScore }}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ totalBonusScore }}</td>
+  </ng-container>
+  <ng-container matColumnDef="final">
+    <th mat-header-cell *matHeaderCellDef>Final</th>
+    <td mat-cell *matCellDef="let category">{{ category.finalScore }}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ totalFinalScore }}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  <tr mat-footer-row *matFooterRowDef="columnsToDisplay"></tr>
+</table>
