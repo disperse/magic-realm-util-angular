@@ -12,11 +12,11 @@ nav {
 }
 a {
   text-decoration: none;
-  color: gold;
+  color: white;
   padding: 0 1em 0 1em;
   font-size: x-large;
 }
 a.active {
-  color: cornflowerblue;
+  color: rgb(203, 43, 57);
   text-decoration: underline;
 }
